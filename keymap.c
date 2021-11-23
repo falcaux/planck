@@ -24,12 +24,17 @@ enum planck_layers {
     _LOWER,
     _RAISE,
     _ADJUST,
-	_FN
+    _FN
 };
 
 enum planck_keycodes {
     L_RESET = SAFE_RANGE,
 };
+
+
+#define LOWER MO(_LOWER)
+#define RAISE MO(_RAISE)
+#define FN MO(_FN)
 
 
 #define LOWER MO(_LOWER)
@@ -49,53 +54,53 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	  * `-----------------------------------------------------------------------------------'
 	  */
 		[_BASE] = LAYOUT_planck_grid(
-		KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P, KC_BSPC,
-		KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,KC_SCLN, KC_QUOT,
-		KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT,  KC_UP,  KC_ENT,
-		KC_LCTL, KC_LGUI, KC_LALT,   FN,   LOWER,  KC_SPC,  KC_SPC,   RAISE, KC_RALT, KC_LEFT,KC_DOWN, KC_RGHT
+		KC_ESC,  KC_Q,    KC_W,    KC_E,   KC_R,    KC_T,    KC_Y,  KC_U,    KC_I,    KC_O,    KC_P, KC_BSPC,
+		KC_TAB,  KC_A,    KC_S,    KC_D,   KC_F,    KC_G,    KC_H,  KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
+		KC_LSFT, KC_Z,    KC_X,    KC_C,   KC_V,    KC_B,    KC_N,  KC_M, KC_COMM,  KC_DOT,   KC_UP,  KC_ENT,
+		KC_LCTL, KC_LGUI, KC_LALT,   FN,  LOWER,  KC_SPC,  KC_SPC, RAISE, KC_RALT, KC_LEFT, KC_DOWN, KC_RGHT
 	),
-
+	
 	/* FN
 	 * ,-----------------------------------------------------------------------------------.
 	 * |      |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |  Del |
 	 * |------+------+------+------+------+-------------+------+------+------+------+------|
-	 * | CAPS |      |      |      |      |      |      |      |      |Sck Up| Clk 1|Sck Dn|
+	 * | CAPS | Prev | Next | Vol+ | Pg Up|      |      |  -_  |      |Sck Up| Clk 1|Sck Dn|
 	 * |------+------+------+------+------+------|------+------+------+------+------+------|
-	 * |      | PLAY | MUTE |      |      |      |      |      |      | Clk 2| Mse U| Clk 1|
+	 * |      | PLAY | MUTE | Vol- | Pg Dn|      |      |   !  |  [{  |  ]}  | Mse U| Clk 1|
 	 * |------+------+------+------+------+------+------+------+------+------+------+------|
-	 * |      | Reset| Reset|  FN  |      |    PLAY     |      |      | Mse L| Mse D| Mse R|
+	 * |      | Reset| Reset|  FN  | Lower|    PLAY     |Sck Up|Sck Dn| Mse L| Mse D| Mse R|
 	 * `-----------------------------------------------------------------------------------'
 	 */
 	 
 	[_FN] = LAYOUT_planck_grid(
 		RGB_TOG,     KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,      KC_9,     KC_0, KC_BSPC,
-		KC_CAPS,  KC_MNXT, KC_MPRV, KC_VOLU, _______, _______, _______, KC_MINS, _______,   KC_WH_U,  KC_BTN1, KC_WH_D,
-		_______,  KC_MPLY, KC_MUTE, KC_VOLD, _______, _______, _______, KC_EXLM, _______,   KC_BTN2,  KC_MS_U, KC_BTN1, 
+		KC_CAPS,  KC_MPRV, KC_MNXT, KC_VOLU, KC_PGUP, _______, _______, KC_MINS, _______,   KC_WH_U,  KC_BTN2, KC_WH_D,
+		_______,  KC_MPLY, KC_MUTE, KC_VOLD, KC_PGDN, _______, _______, KC_EXLM, KC_LBRC,   KC_RBRC,  KC_MS_U, KC_BTN1, 
 		_______,    RESET,   RESET, _______, _______, KC_MPLY, KC_MPLY, KC_WH_U, KC_WH_D,   KC_MS_L,  KC_MS_D, KC_MS_R
 	),
 	
-	/* Lower
+	/* Lowers
 	 * ,-----------------------------------------------------------------------------------.
-	 * |  ~   |   1  |   2  |   3  |   4  |   5  |   6  |  =+  |   7  |   8  |   9  |  DEL |
+	 * |  ~   |   1  |   2  |   3  |   4  |   5  |   6  |  =+  |   7  |   8  |   9  |  Del |
 	 * |------+------+------+------+------+-------------+------+------+------+------+------|
-	 * | CAPS |      | Pg Up|      |      |      |      |   -_ |   4  |   5  |   6  |  /?  |
+	 * | CAPS | Prev | Next | Vol+ | Pg Up|      |      |   -_ |   4  |   5  |   6  |  /?  |
 	 * |------+------+------+------+------+------|------+------+------+------+------+------|
-	 * |      | Home | Pg Dn| End  |      |      |      |   !  |   1  |   2  |   3  | Vol+ |
+	 * |      | PLAY | MUTE | Vol- | Pg Dn|      |      |   !  |   1  |   2  |   3  | Pg Up|
 	 * |------+------+------+------+------+------+------+------+------+------+------+------|
-	 * |      |      |      |  FN  |      |    INSER    |   0  |   0  | Prev | Next | Vol- |
+	 * |      |      |      |  FN  | Lower|    INSER    |   0  |   0  | Home |  End | Pg Dn|
 	 * `-----------------------------------------------------------------------------------'
 	 */
 	 
 	[_LOWER] = LAYOUT_planck_grid(
 		KC_TILD,     KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,  KC_EQL, KC_7,   KC_8,   KC_9,  KC_BSPC,
-		KC_CAPS,  _______, KC_PGUP, _______, _______, _______, _______, KC_MINS, KC_4,   KC_5,   KC_6,  KC_SLSH,
-		_______,  KC_HOME, KC_PGDN,  KC_END, _______, _______, _______, KC_EXLM, KC_1,   KC_2,   KC_3,  KC_VOLU, 
-		_______,  _______, _______, _______, _______,  KC_INS, KC_INS,     KC_0, KC_0,KC_MPRV, KC_MNXT, KC_VOLD
+		KC_CAPS,  KC_MPRV, KC_MNXT, KC_VOLU, KC_PGUP, _______, _______, KC_MINS, KC_4,   KC_5,   KC_6,  KC_SLSH,
+		_______,  KC_MPLY, KC_MUTE, KC_VOLD, KC_PGDN, _______, _______, KC_EXLM, KC_1,   KC_2,   KC_3,  KC_PGUP, 
+		_______,  _______, _______, _______, _______,  KC_INS, KC_INS,     KC_0, KC_0,KC_HOME, KC_END,  KC_PGDN
 		),
 
 	/* Raise
 	 * ,-----------------------------------------------------------------------------------.
-	 * |   `  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | DEL  |
+	 * |   `  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | Del  |
 	 * |------+------+------+------+------+-------------+------+------+------+------+------|
 	 * | CAPS |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  -_  |   +  |   _  |  =+  |  \|  |
 	 * |------+------+------+------+------+------|------+------+------+------+------+------|
@@ -113,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* Adjust (Lower + Raise)
      * ,-----------------------------------------------------------------------------------.
-     * | RGB  |EFFET+|  HUE+|BRGTH+| SAT+ |BL ON | MOD+ |  BL+ |BL TOG|BLCYCL|BLBREA| DEL  |
+     * | RGB  |EFFET+|  HUE+|BRGTH+| SAT+ |BL ON | MOD+ |  BL+ |BL TOG|BLCYCL|BLBREA| Del  |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |Reset |EFFET-|  HUE-|BRGTH-| SAT- |BL OFF| MOD- |  BL- |      |      |      |   |  |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
