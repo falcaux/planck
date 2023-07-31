@@ -12,7 +12,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */08070777708888
+ */
 
 #include QMK_KEYBOARD_H
 #include "muse.h"
@@ -57,18 +57,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	
 	/* FN
 	 * ,-----------------------------------------------------------------------------------.
-	 * | RGB  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |  F7  |  F8  |  F9  |  Del |
+	 * | RGB  |   !  |   @  |   #  |   $  |   %  |   *  |  =+  |  F7  |  F8  |  F9  |  Del |
 	 * |------+------+------+------+------+-------------+------+------+------+------+------|
-	 * | CAPS | Prev | Next | Vol+ | Pg Up|      |      |  -_  |  F4  |  F5  |  F6  |  /?  |
+	 * |      | Prev | Next | Vol+ | Pg Up|      |      |  -_  |  F4  |  F5  |  F6  |  /?  |
 	 * |------+------+------+------+------+------|------+------+------+------+------+------|
-	 * |      | PLAY | MUTE | Vol- | Pg Dn|      |      |   !  |  F1  |  F2  |  F3  | Pg Up|
+	 * |      | PLAY | MUTE | Vol- | Pg Dn|   [  |   ]  |   !  |  F1  |  F2  |  F3  | Pg Up|
 	 * |------+------+------+------+------+------+------+------+------+------+------+------|
-	 * |      | Reset| Reset|      |      |    INSER    |   0  |  F10 |  F11 |  F12 | Pg Dn|
+	 * |      | Reset|      |      |      |    INSER    |   0  |  F10 |  F11 |  F12 | Pg Dn|
 	 * `-----------------------------------------------------------------------------------'
 	 */
 	
 	[_FN] = LAYOUT_planck_grid(
-		RGB_TOG,     KC_1,     KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,  KC_F7,   KC_F8,   KC_F9,  KC_BSPC,
+		RGB_TOG,  KC_EXLM,    KC_AT, KC_HASH,  KC_DLR, KC_PERC, KC_ASTR,  KC_EQL,  KC_F7,   KC_F8,   KC_F9,  KC_BSPC,
 		_______,  KC_MPRV,  KC_MNXT, KC_VOLU, KC_PGUP, _______, _______, KC_MINS,  KC_F4,   KC_F5,   KC_F6,  KC_SLSH,
 		_______,  KC_MPLY,  KC_MUTE, KC_VOLD, KC_PGDN, KC_LBRC, KC_RBRC, KC_EXLM,  KC_F1,   KC_F2,   KC_F3,  KC_PGUP, 
 		_______,    RESET,  _______, _______, _______,  KC_INS,  KC_INS,    KC_0,  KC_F10,  KC_F11,  KC_F12, KC_PGDN
@@ -80,24 +80,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	 * |------+------+------+------+------+-------------+------+------+------+------+------|
 	 * | CAPS | Prev | Next | Vol+ | Pg Up|      |  =+  |   -_ |   4  |   5  |   6  |  /?  | 
 	 * |------+------+------+------+------+------|------+------+------+------+------+------|
-	 * |      | PLAY | MUTE | Vol- | Pg Dn|   [  |   ]  |   !  |   1  |   2  |   3  | Pg Up|
+	 * |      | PLAY | MUTE | Vol- | Pg Dn|   [  |   ]  |   !  |   1  |   2  |   3  |  \|  |
 	 * |------+------+------+------+------+------+------+------+------+------+------+------|
-	 * |      |      |      |      |      |    SPACE    |   0  |   0  | Home |  End | Pg Dn|
+	 * |      |      |      |      |      |    SPACE    |   0  |   0  | Home |  End |   .  |
 	 * `-----------------------------------------------------------------------------------'
 	 */
 
 	[_LOWER] = LAYOUT_planck_grid(
 		KC_TILD,     KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,  KC_EQL, KC_7,   KC_8,   KC_9,  KC_BSPC,
 		KC_CAPS,  KC_MPRV, KC_MNXT, KC_VOLU, KC_PGUP, _______,  KC_EQL, KC_MINS, KC_4,   KC_5,   KC_6,  KC_SLSH,
-		_______,  KC_MPLY, KC_MUTE, KC_VOLD, KC_PGDN, KC_LBRC, KC_RBRC, KC_EXLM, KC_1,   KC_2,   KC_3,  KC_PGUP, 
-		_______,  _______, _______, _______, _______, _______, _______,    KC_0, KC_0,KC_HOME, KC_END,  KC_PGDN
+		_______,  KC_MPLY, KC_MUTE, KC_VOLD, KC_PGDN, KC_LBRC, KC_RBRC, KC_EXLM, KC_1,   KC_2,   KC_3,  KC_NUBS, 
+		_______,  _______, _______, _______, _______,  KC_INS,  KC_INS,    KC_0, KC_0,KC_HOME, KC_END,  KC_DOT
 		),
 
 	/* Raise
 	 * ,-----------------------------------------------------------------------------------.
 	 * |   `  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | Del  |
 	 * |------+------+------+------+------+-------------+------+------+------+------+------|
-	 * | CAPS | Prev | Next | Vol+ | Pg Up|      |      |  -_  |   +  |   _  |  =+  |  \|  |
+	 * | CAPS | Prev | Next | Vol+ | Pg Up|      |  =+  |  -_  |   +  |   _  |  =+  |  \|  |
 	 * |------+------+------+------+------+------|------+------+------+------+------+------|
 	 * |      | PLAY | MUTE | Vol- | Pg Dn|      |      |      |  [{  |  ]}  | Pg Up|  ?   |
 	 * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -106,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	 */
 	[_RAISE] = LAYOUT_planck_grid(
 		KC_GRV,  KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN,KC_RPRN,  KC_DEL,  
-		KC_CAPS, KC_MPRV, KC_MNXT, KC_VOLU, KC_PGUP, _______, _______, KC_MINS, KC_PLUS, KC_UNDS, KC_EQL, KC_NUBS,
+		KC_CAPS, KC_MPRV, KC_MNXT, KC_VOLU, KC_PGUP, _______,  KC_EQL, KC_MINS, KC_PLUS, KC_UNDS, KC_EQL, KC_NUBS,
 		_______, KC_MPLY, KC_MUTE, KC_VOLD, KC_PGDN, _______, _______, _______, KC_LBRC, KC_RBRC, KC_PGUP,KC_QUES,
 		_______,  _______, _______, _______, _______,  KC_INS, KC_INS, _______, KC_RALT, KC_HOME, KC_PGDN, KC_END
 	),
@@ -124,22 +124,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	 */
 
 
-
 	/* Adjust (Lower + Raise)
 	 * ,-----------------------------------------------------------------------------------.
 	 * | RGB  |EFFET+|  HUE+|BRGTH+| SAT+ |BL ON | MOD+ |  BL+ |BL TOG|BLCYCL|BLBREA| Del  |
 	 * |------+------+------+------+------+------+------+------+------+------+------+------|
-	 * |Reset |EFFET-|  HUE-|BRGTH-| SAT- |BL OFF| MOD- |  BL- |      |      |      |   |  |
+	 * |Reset |EFFET-|  HUE-|BRGTH-| SAT- |BL OFF| MOD- |  BL- |      |MolDwn|      |Molup |
 	 * |------+------+------+------+------+------+------+------+------+------+------+------|
-	 * |      |RGB P |RGB B |RGB R |RGB SW|RGB SN|RGB G |RGB K |RGB X |RGB T | Vol+ | PLAY |
+	 * |      |RGB P |RGB B |RGB R |RGB SW|RGB SN|RGB G |RGB K |RGB X | ClqG | SHaut| ClqD |
 	 * |------+------+------+------+------+------+------+------+------+------+------+------|
-	 * |Aud on|Aud of|Mus on|Musoff|      |      |      |      |      | Prev | Vol- | Next |
+	 * |Aud on|Aud of|Mus on|Musoff|      |      |      |      |      | SDroi| Sbas | SGau |
 	 * `-----------------------------------------------------------------------------------'
 	 */
 	[_ADJUST] = LAYOUT_planck_grid(
 		RGB_TOG, RGB_SPI, RGB_HUI, RGB_VAI, RGB_SAI,  RGB_MOD, RGB_MOD,  BL_INC, BL_TOGG, BL_STEP, BL_BRTG, KC_DEL,
-		_______, RGB_SPD, RGB_HUD, RGB_VAD, RGB_SAD, RGB_RMOD,RGB_RMOD,  BL_DEC, _______, KC_WH_U, KC_BTN2, KC_WH_D,
-		_______, RGB_M_P, RGB_M_B, RGB_M_R,RGB_M_SW, RGB_M_SN, RGB_M_G, RGB_M_K, RGB_M_X, RGB_M_T, KC_MS_U, KC_BTN1,
+		_______, RGB_SPD, RGB_HUD, RGB_VAD, RGB_SAD, RGB_RMOD,RGB_RMOD,  BL_DEC, _______, KC_WH_U, RGB_M_T, KC_WH_D,
+		_______, RGB_M_P, RGB_M_B, RGB_M_R,RGB_M_SW, RGB_M_SN, RGB_M_G, RGB_M_K, RGB_M_X, KC_BTN2, KC_MS_U, KC_BTN1,
 		KC_SLEP,  AU_OFF,   MU_ON,  MU_OFF, _______,   KC_INS, KC_INS, KC_WH_U, KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R
     )
 };
